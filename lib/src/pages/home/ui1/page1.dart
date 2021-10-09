@@ -80,6 +80,7 @@ class _Page1State extends State<Page1> {
               ),
               const SizedBox(height: 4),
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 8, horizontal: 12),

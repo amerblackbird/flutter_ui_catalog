@@ -13,6 +13,8 @@ class _Page3State extends State<Page3> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
+  bool _obscureText = true;
+
   @override
   void dispose() {
     _passwordController.dispose();
@@ -81,21 +83,33 @@ class _Page3State extends State<Page3> {
               ),
               const SizedBox(height: 4),
               TextFormField(
+                obscureText: _obscureText,
                 controller: _passwordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                   border: InputBorder.none,
-                  focusedBorder: OutlineInputBorder(
+                  suffixIcon: Visibility(
+                    child: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () => setState(() {
+                        _obscureText = !_obscureText;
+                      }),
+                    ),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: _primaryColor),
                   ),
-                  errorBorder: OutlineInputBorder(
+                  errorBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: _dangerColor),
                   ),
-                  focusedErrorBorder: OutlineInputBorder(
+                  focusedErrorBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: _dangerColor),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: _editTextBorderColor),
                   ),
                 ),
